@@ -1,0 +1,50 @@
+extends layout
+
+block body
+  nav.navbar.navbar-inverse.navbar-fixed-top( role = 'navigation' )
+    .container
+        .navbar-header
+          button.navbar-toggle(
+            data-target = '#navbarAteneo'
+            data-toggle = 'collapse'
+            type = 'button'
+          )
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand
+            h5 Ateneo
+        #navbarAteneo.collapse.navbar-collapse(
+          ng-show = 'isLoggedIn'
+        )
+          ul.nav.navbar-nav.navbar-right
+            li.dropdown
+              a.dropdown-toggle.dropdown-avatar(
+                href = '#'
+                data-toggle = 'dropdown'
+              )
+                span( ng-bind = 'username' )
+                |&nbsp;
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(
+                    ng-click = 'logout()',
+                    translate = 'NAVBAR.LOGOUT'
+                  )
+  .main-container.container
+    alert(
+      close = 'closeAlert( $index )'
+      ng-repeat = 'alert in alerts'
+      type = 'alert.type'
+    )
+      span( ng-bind = 'alert.message' )
+    div( ng-view )
+
+  footer.col-md-12.text-center
+    .col-md-2.pull-left
+      select.form-control(
+        ng-model = 'language'
+        ng-options = 'language.key as language.language for language in languages'
+      )

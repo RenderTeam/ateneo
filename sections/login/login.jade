@@ -1,0 +1,45 @@
+.row
+  .col-md-4.col-md-offset-4
+    .login.box
+      .box-header.padded Login
+      .box-content.padded
+        form.separate-sections.form-signin( name = 'formLogin' )
+          .form-group
+            .input-group
+              .input-group-addon
+                span.glyphicon.glyphicon-user
+              input.form-control(
+                autofocus
+                ng-model      = 'user.username'
+                placeholder   = 'Usuario'
+                required
+                type          = 'text'
+              )
+          .form-group
+            .input-group
+              .input-group-addon
+                span.glyphicon.glyphicon-asterisk
+              input.form-control(
+                ng-model      = 'user.password'
+                placeholder   = 'Contraseña'
+                required
+                type          = 'password'
+              )
+          .form-group
+            button.btn.btn-primary.btn-block(
+              ng-click      = 'login()'
+              ng-hide       = 'loading'
+              ng-disabled   = 'formLogin.$invalid'
+            )
+              i.icon-signin
+              |  Iniciar sesión
+          .text-center
+            img(
+              ng-show = 'loading'
+              src     = '/images/loader.gif'
+            )
+          .alert.alert-error.alert-warning.alert-dismissable(
+            ng-cloak
+            ng-show = 'errorInLogin && !loading'
+          )
+            span Error en el login
