@@ -25,6 +25,30 @@ module.exports = function (app) {
       return promise;
     };
 
+    event.getQuiz = function (eventId) {
+      var promise = http.get('/events/' + eventId + '/quiz')
+        .success(utils.returnData)
+        .error(utils.onError);
+
+      return promise;
+    };
+
+    event.sendAnswer = function (eventId, params) {
+      var promise = http.put('/events/' + eventId + '/answer', params)
+        .success(utils.returnData)
+        .error(utils.onError);
+
+      return promise;
+    };
+
+    event.getScores = function (eventId) {
+      var promise = http.get('/events/' + eventId + '/score')
+        .success(utils.returnData)
+        .error(utils.onError);
+
+      return promise;
+    };
+
     return event;
   }
   app.factory('Events', events);

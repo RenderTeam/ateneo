@@ -1,21 +1,26 @@
-.container.col-md-12
-  .row
-    .col-md-12
-      .jumbotron
-        h1.text-center GOOOOL
-  .row
-    .col-md-12.row-fluid
-      .col-md-6
-        .col-md-12.alert.alert-info
-          h1.pull-left GOL
-      .col-md-6
-        .col-md-12.alert.alert-info
-          h1.pull-left GOL
-  .row
-    .col-md-12.row-fluid
-      .col-md-6
-        .col-md-12.alert.alert-info
-          h1.pull-left GOL
-      .col-md-6
-        .col-md-12.alert.alert-info
-          h1.pull-left GOL
+.col-md-12
+h2 Pregunta {{questionIndex + 1}}/{{quiz.length}}
+
+hr
+h3(
+  ng-bind = 'currentQuestion.question'
+)
+
+.radio(
+  ng-repeat = 'alternative in currentQuestion.alternatives'
+)
+  label
+    input(
+      required
+      type  = 'radio'
+      ng-model = 'currentQuestion.hisAnswer'
+      name = 'lol'
+      value = '{{alternative}}'
+    )
+    span( ng-bind = 'alternative')
+
+hr
+button.btn.btn-block.btn-primary(
+  ng-disabled = ''
+  ng-click = 'sendAnswer()'
+) Enviar respuesta

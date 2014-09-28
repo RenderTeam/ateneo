@@ -10,6 +10,7 @@ require('angular-resource');
 require('angular-route');
 require('angular-translate');
 require('angular-timer');
+require('angular-grouped-bars');
 
 var app = angular.module('ateneo', [
     'angular.css.injector',
@@ -18,6 +19,7 @@ var app = angular.module('ateneo', [
     'ngRoute',
     'pascalprecht.translate',
     'timer',
+    'prestigos.groupedBars',
     'ui.bootstrap'
   ]);
 

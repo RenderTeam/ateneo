@@ -19,6 +19,7 @@
     "angular-translate": "~2.0.1",
     "angular-css-injector": "~1.0.2",
     "angular-route": "~1.2.13-build.2255",
-    "angular-timer": "~1.1.7"
+    "angular-timer": "~1.1.7",
+    "angular-grouped-bars": "prestigos/angular-grouped-bars#~0.1.0"
   }
 }
