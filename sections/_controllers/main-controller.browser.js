@@ -37,7 +37,7 @@ module.exports = function (app) {
       cssInjector.removeAll();
       var flag = next.$$route && next.$$route.originalPath && (/public/g.test(next.$$route.originalPath) || /register/g.test(next.$$route.originalPath));
       if ( !flag && !Auth.isLoggedIn() ) {
-        location.path('/login');
+        //location.path('/login');
       }
     });
     /*jslint unparam:false*/

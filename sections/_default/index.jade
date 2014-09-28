@@ -18,7 +18,9 @@ block body
         #navbarAteneo.collapse.navbar-collapse(
           ng-show = 'isLoggedIn'
         )
-          ul.nav.navbar-nav.navbar-right
+          ul.nav.navbar-nav.navbar-right(
+            ng-show = 'isLoggedIn'
+          )
             li.dropdown
               a.dropdown-toggle.dropdown-avatar(
                 href = '#'
