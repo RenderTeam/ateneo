@@ -65,6 +65,7 @@ module.exports = function (app) {
           StudyGroups.update( updateParams )
             .success(function (response) {
               console.log(response);
+              location.path('profile/');
             });
         });
 
