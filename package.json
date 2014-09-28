@@ -13,6 +13,7 @@
     "moment": "^2.8.3",
     "passport": "*",
     "passport-local": "*",
+    "paypal-rest-sdk": "^1.0.0",
     "restler": "~3.1.0",
     "sendgrid": "^1.2.0",
     "transformify": "~0.1.2",
