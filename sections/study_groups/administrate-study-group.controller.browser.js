@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = function (app) {
-  function administrateStudyGroup(scope, routeParams, StudyGroups, Users, Events) {
+  function administrateStudyGroup(scope, routeParams, StudyGroups, Users, Events, location) {
 
 
 
@@ -44,6 +44,7 @@ module.exports = function (app) {
 
     scope.saveNewEvent = function  () {
       scope.newEvent.date = scope.newEvent.date + ' ' +scope.hour + ':' + scope.minute;
+      scope.newEvent.users = scope.studyGroup.users;
       scope.newEvent.jackpot = 0;
       scope.newEvent.study_group = routeParams.groupId;
       var params = {
@@ -64,6 +65,7 @@ module.exports = function (app) {
           StudyGroups.update( updateParams )
             .success(function (response) {
               console.log(response);
+              location.path('profile/');
             });
         });
 
@@ -74,5 +76,5 @@ module.exports = function (app) {
   }
 
   app.controller('AdministrateStudyGroup', administrateStudyGroup);
-  administrateStudyGroup.$inject = ['$scope', '$routeParams', 'StudyGroups', 'Users', 'Events'];
+  administrateStudyGroup.$inject = ['$scope', '$routeParams', 'StudyGroups', 'Users', 'Events', '$location'];
 };

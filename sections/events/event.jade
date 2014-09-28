@@ -5,12 +5,16 @@ doctype html
     .glyphicon.glyphicon-chevron-left &nbsp Regresar al perfil
 .col-md-12(ng-show = 'questionView')
   .col-md-6
-    h1 Nombre del Evento
+    h1(ng-bind = 'event.name')
     .super-text
       timer(countdown='lu', max-time-unit='"day"', interval='1000') {{ddays}}:{{hhours}}:{{mminutes}}:{{sseconds}}
       br
-      | $ 100.00
-      br
+      .col-md-1
+        .supertext $ &nbsp
+      .col-md-11
+        .supertext(ng-bind =  'event.jackpot')
+        br
+
     .row
       .col-md-2
         input.input.form-control(type = 'text', ng-model = 'event.budget')
@@ -25,12 +29,14 @@ doctype html
         input(type='image', src='https://www.sandbox.paypal.com/es_XC/i/btn/btn_cart_LG.gif', border='0', name='submit', alt='PayPal, la forma mÃ¡s segura y rÃ¡pida de pagar en lÃ­nea.')
         img(alt='', border='0', src='https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif', width='1', height='1')
 
-
   .col-md-6
     .col-md-6.center.text-center
       h2 Gladiadores
-      label Nombre
+      label Ardroz
       hr
+      label Alevardi
+      hr
+      label Dan
 .col-md-12(ng-hide = 'questionView')
   button.btn.btn-success.pull-right(
     ng-click = " questionView = !questionView ") Información Batalla
