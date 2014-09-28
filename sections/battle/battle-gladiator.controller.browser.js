@@ -2,11 +2,11 @@
 'use strict';
 
 module.exports = function (app) {
-  function battleGladiator(scope) {
-
+  function battleGladiator(scope, cssInjector) {
+    cssInjector.add('css/battle.css');
   }
 
 
   app.controller('BattleGladiator', battleGladiator);
-  battleGladiator.$inject = ['$scope'];
+  battleGladiator.$inject = ['$scope', 'cssInjector'];
 };
