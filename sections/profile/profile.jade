@@ -21,31 +21,52 @@ doctype html
   .tab-content
     #studyGroup.tab-pane.fade.in.active
       div.list-group
-        a.list-group-item(href='#') lol
-        a.list-group-item(href='#') Morbi leo risus
-        a.list-group-item(href='#') Porta ac consectetur ac
-        a.list-group-item(href='#') Vestibulum at eros
-      div( ng-controller = 'NewStudyGroup' )
-        a.btn.btn-success.pull-right(
-          href = '/#/study-groups'
-        ) Nuevo Grupo Estudio
+<<<<<<< HEAD
+        a.list-group-item(
+          href=''
+          ng-click = 'view = 2') lol
+        a.list-group-item(href='') Morbi leo risus
+        a.list-group-item(href='') Porta ac consectetur ac
+        a.list-group-item(href='') Vestibulum at eros
+      a.btn.btn-success.pull-right(
+        href = '/#/study-groups'
+      ) Nuevo Grupo Estudio
 
     #events.tab-pane.fade
       div.list-group
-        a.list-group-item(href='#') Dapibus ac facilisis in
-        a.list-group-item(href='#') Morbi leo risukjljljls
-        a.list-group-item(href='#') Vestibulum at eros
+        a.list-group-item(
+          href=''
+          ng-click = 'view = 1') Dapibus ac facilisis in
+        a.list-group-item(href='') Morbi leo risukjljljls
+        a.list-group-item(href='') Vestibulum at eros
 
+.col-md-8
+  .col-med-12.text-center( ng-show = 'view === 0 ? true:false')
+    h2 Selecciona un grupo de estudio o un evento
 
-.col-md-8.text-center
-  h1 Nombre del Evento
-  .super-text
-    timer(countdown='lu', max-time-unit='"day"', interval='1000') {{ddays}}:{{hhours}}:{{mminutes}}:{{sseconds}}
-    br
-    | $ 100.00
-    br
-    button.btn.btn-success.btn-lg.btn-warning( ng-click='openEvent()')
-      .glyphicon.glyphicon-screenshot
+  .col-med-12.text-center( ng-show = 'view === 1 ? true:false')
+    h1 Nombre del Evento
+    .super-text
+      timer(countdown='lu', max-time-unit='"day"', interval='1000') {{ddays}}:{{hhours}}:{{mminutes}}:{{sseconds}}
       br
-      | Ir a Evento
-p.clearfix
+      | $ 100.00
+      br
+      button.btn.btn-success.btn-lg.btn-warning( ng-click='openEvent()')
+        .glyphicon.glyphicon-screenshot
+        br
+        | Ir a Evento
+
+  .col-med-12.text-center( ng-show = 'view === 2 ? true:false')
+    h2 Grupo de estudios
+    h4 Tema
+    .col-md-6
+      h3 Usuarios &nbsp
+      label Nombre
+      hr
+    .col-md-6
+      h3 Proximos eventos &nbsp
+      label Nombre
+      hr
+    button.btn.btn-success(ng-click = 'openGroup()')
+      .glyphicon.glyphicon-list-alt &nbsp Ir al Grupo de Estudio
+  p.clearfix
