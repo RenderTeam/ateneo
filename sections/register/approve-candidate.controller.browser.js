@@ -2,24 +2,39 @@
 'use strict';
 
 module.exports = function (app) {
-  function approveCandidate(scope, routeParams, Candidates) {
-    console.log(routeParams);
-    var params = {
+  function approveCandidate(scope, routeParams, location, Candidates, Users) {
+    var candidateParams = {
       condition: {
         '_id': routeParams.candidateId
       }
     };
 
-    Candidates.search(params)
+    Candidates.search(candidateParams)
       .success(function (response) {
-        console.log(response);
+        scope.user = response.data[0];
       });
 
     scope.approve = function () {
-      console.log(scope.user);
+      var params = {
+        reference: scope.user
+      };
+
+      Users.new(params)
+        .success(function (data) {
+          if (data.status) {
+            scope.alerts.push({
+              type: 'success',
+              message: 'Usuario creado correctamente'
+            });
+
+            Candidates.remove(candidateParams);
+
+            location.path('/login');
+          }
+        });
     };
   }
 
   app.controller('ApproveCandidate', approveCandidate);
-  approveCandidate.$inject = ['$scope', '$routeParams', 'Candidates'];
+  approveCandidate.$inject = ['$scope', '$routeParams', '$location', 'Candidates', 'Users'];
 };
