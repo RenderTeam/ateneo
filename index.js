@@ -77,6 +77,89 @@ app.get( /\/html\/([\w\/]+)\.html/, function ( req, res ) {
   res.render( path );
 });
 
+// General CRUD
+var apiUrl = config.API,
+    Bacon = require('baconjs').Bacon,
+    rest = require('restler');
+
+app.put( '/:schema/delete', function ( req, res ) {
+  var schema = req.params.schema,
+      url = apiUrl.concat(schema + '/delete');
+
+  var bacon = (function() {
+    var request = rest.del( url, { data: req.body }  );
+    return Bacon.fromEventTarget(request, 'complete');
+  }());
+
+  bacon.onValue( function ( data ) {
+    res.json( data );
+  });
+});
+
+app.get( '/:schema', function ( req, res ) {
+  var schema = req.params.schema,
+      url = apiUrl.concat(schema);
+
+  var bacon = (function() {
+    var request = rest.get( url );
+    return Bacon.fromEventTarget(request, 'complete');
+  }());
+
+  bacon.onValue( function ( data ) {
+    res.json(data);
+  });
+});
+
+app.post( '/:schema', function ( req, res ) {
+  var schema = req.params.schema,
+      url = apiUrl.concat(schema);
+
+  var bacon = (function() {
+    var request = rest.post( url, { data: req.body } );
+    return Bacon.fromEventTarget(request, 'complete');
+  }());
+
+  bacon.onValue( function ( data ) {
+    res.json(data);
+  });
+});
+
+/**
+* @receive req and res
+* description: Create a new employee
+* @return json with data
+*/
+app.post( '/:schema/new', function ( req, res ) {
+  var schema = req.params.schema,
+      url = apiUrl.concat(schema + '/new');
+  var bacon = (function() {
+    var request = rest.post( url, { data: req.body });
+    return Bacon.fromEventTarget(request, 'complete');
+  }());
+
+  bacon.onValue( function ( data ) {
+    res.json(data);
+  });
+});
+
+/**
+* @receive req and res
+* description: Update the data of a Employee
+* @return json with data
+*/
+app.put( '/:schema', function ( req, res ) {
+  var schema = req.params.schema,
+      url = apiUrl.concat(schema);
+
+  var bacon = (function() {
+    var request = rest.put( url, { data: req.body });
+    return Bacon.fromEventTarget(request, 'complete');
+  }());
+
+  bacon.onValue( function ( data ) {
+    res.json(data);
+  });
+});
 
 /*
  * Start Server

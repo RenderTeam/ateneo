@@ -35,7 +35,7 @@ module.exports = function (app) {
     /*jslint unparam:true*/
     rootScope.$on('$routeChangeStart', function ( event, next, current ) {
       cssInjector.removeAll();
-      var flag = next.$$route && next.$$route.originalPath && /public/g.test(next.$$route.originalPath);
+      var flag = next.$$route && next.$$route.originalPath && (/public/g.test(next.$$route.originalPath) || /register/g.test(next.$$route.originalPath));
       if ( !flag && !Auth.isLoggedIn() ) {
         location.path('/login');
       }

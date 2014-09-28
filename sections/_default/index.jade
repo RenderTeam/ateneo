@@ -33,7 +33,7 @@ block body
                     ng-click = 'logout()',
                     translate = 'NAVBAR.LOGOUT'
                   )
-  .main-container.container
+  .col-md-12
     alert(
       close = 'closeAlert( $index )'
       ng-repeat = 'alert in alerts'
@@ -43,7 +43,7 @@ block body
     div( ng-view )
 
   footer.col-md-12.text-center
-    .col-md-2.pull-left
+    .col-md-2.pull-right
       select.form-control(
         ng-model = 'language'
         ng-options = 'language.key as language.language for language in languages'

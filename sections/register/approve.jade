@@ -1,0 +1,78 @@
+.col-md-4.center
+  form( name = 'ApproveForm' )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-user
+        input.form-control(
+          disabled
+          ng-model      = 'user.username'
+          placeholder   = 'Usuario'
+          required
+          type          = 'text'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-envelope
+        input.form-control(
+          disabled
+          ng-model      = 'user.mail'
+          placeholder   = 'Correo'
+          required
+          type          = 'email'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-user
+        input.form-control(
+          disabled
+          ng-model      = 'user.first_name'
+          placeholder   = 'Nombre(s)'
+          required
+          type          = 'text'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-user
+        input.form-control(
+          disabled
+          ng-model      = 'user.last_name'
+          placeholder   = 'Apellidos'
+          required
+          type          = 'text'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-envelope
+        input.form-control(
+          ng-model      = 'user.password'
+          placeholder   = 'Password'
+          required
+          type          = 'password'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-envelope
+        input.form-control(
+          ng-model      = 'confirmPassword'
+          placeholder   = 'Password'
+          required
+          type          = 'password'
+        )
+    .form-group
+      button.btn.btn-primary.btn-block(
+        ng-click      = 'register()'
+        ng-hide       = 'loading'
+        ng-disabled   = 'ApproveForm.$invalid'
+      )
+        i.glyphicon.glyphicon-log-in &nbsp;Crear cuenta
+    .text-center
+      img(
+        ng-show = 'loading'
+        src     = '/images/loader.gif'
+      )

@@ -1,0 +1,50 @@
+.col-md-4.center
+  form( name = 'RegisterForm' )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-user
+        input.form-control(
+          autofocus
+          ng-model      = 'user.username'
+          placeholder   = 'Usuario'
+          required
+          type          = 'text'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-envelope
+        input.form-control(
+          ng-model      = 'user.mail'
+          placeholder   = 'Correo'
+          required
+          type          = 'email'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-envelope
+        input.form-control(
+          ng-model      = 'confirmMail'
+          placeholder   = 'Confirmar correo:'
+          required
+          type          = 'email'
+        )
+    .form-group
+      button.btn.btn-primary.btn-block(
+        ng-click      = 'register()'
+        ng-hide       = 'loading'
+        ng-disabled   = 'RegisterForm.$invalid'
+      )
+        i.glyphicon.glyphicon-log-in &nbsp;Crear cuenta
+    .text-center
+      img(
+        ng-show = 'loading'
+        src     = '/images/loader.gif'
+      )
+    .alert.alert-error.alert-warning.alert-dismissable(
+      ng-cloak
+      ng-show = 'errorInLogin && !loading'
+    )
+      span Error en el login
