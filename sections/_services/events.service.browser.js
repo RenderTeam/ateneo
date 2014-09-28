@@ -17,6 +17,16 @@ module.exports = function (app) {
       return promise;
     };
 
+    event.update = function (params) {
+      var url = '/event';
+
+      var promise = http.put(url, params)
+        .success(utils.returnData)
+        .error(utils.onError);
+
+      return promise;
+    };
+
     event.search = function (params) {
       params.fields = ['_id'];
       var promise = http.post('/event', params)
