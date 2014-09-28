@@ -17,7 +17,18 @@ module.exports = function (app) {
       return promise;
     };
 
+    event.update = function (params) {
+      var url = '/event';
+
+      var promise = http.put(url, params)
+        .success(utils.returnData)
+        .error(utils.onError);
+
+      return promise;
+    };
+
     event.search = function (params) {
+      params.fields = ['_id'];
       var promise = http.post('/event', params)
         .success(utils.returnData)
         .error(utils.onError);
@@ -47,6 +58,21 @@ module.exports = function (app) {
         .error(utils.onError);
 
       return promise;
+    };
+
+    event.pay = function (event, budget) {
+      var params = {
+        'event': event,
+        'budget': budget
+      }, promise = http.post('/payment/paypal', params)
+        .success(function (res) {
+          console.log(res);
+        })
+        .error(function (error) {
+          console.log(error);
+        });
+
+        return promise;
     };
 
     return event;

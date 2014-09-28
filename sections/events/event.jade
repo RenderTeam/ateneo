@@ -11,7 +11,21 @@ doctype html
       br
       | $ 100.00
       br
-      button.btn.btn-primary.btn-lg( ng-click = 'enrollInEvent( event.name )' )¡Participar!
+    .row
+      .col-md-2
+        input.input.form-control(type = 'text', ng-model = 'event.budget')
+      .col-md-3
+        button.btn.btn-primary.btn-lg( ng-click = 'enrollInEvent( event, event.budget )' )¡Participar!
+
+      span#myContainer
+      form(target='paypal', action='https://www.sandbox.paypal.com/cgi-bin/webscr', method='post')
+        input(type='hidden', name='cmd', value='_s-xclick')
+        input(type='hidden', name='encrypted', value='-----BEGIN PKCS7-----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-----END PKCS7-----\
+        ')
+        input(type='image', src='https://www.sandbox.paypal.com/es_XC/i/btn/btn_cart_LG.gif', border='0', name='submit', alt='PayPal, la forma mÃ¡s segura y rÃ¡pida de pagar en lÃ­nea.')
+        img(alt='', border='0', src='https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif', width='1', height='1')
+
+
   .col-md-6
     .col-md-6.center.text-center
       h2 Gladiadores
@@ -26,18 +40,55 @@ doctype html
     .form-group
       .form-label Nueva Pregunta:
       textarea.form-control(
-        required
-        ng-model = 'equipment.status'
+        ng-model = 'question.question'
       )
   .col-md-5
     .form-group
       .form-label Escribe las posibles respuestas y selecciona la respuesta correcta:
-      .input-group.col-sm-12( ng-repeat = ' lu in lu')
+      .input-group.col-sm-12
         span.input-group-addon
           input(
             type='radio'
+            ng-model = 'question.answer'
+            value = '0'
             name = 'Question' )
-        input.form-control( type='text' )
+        input.form-control(
+          ng-model = 'question.alternatives[0]'
+          type='text' )
+      .input-group.col-sm-12
+        span.input-group-addon
+          input(
+            type='radio'
+            ng-model = 'question.answer'
+            value = '1'
+            name = 'Question' )
+        input.form-control(
+          ng-model = 'question.alternatives[1]'
+          type='text' )
+      .input-group.col-sm-12
+        span.input-group-addon
+          input(
+            type='radio'
+            ng-model = 'question.answer'
+            value = '2'
+            name = 'Question' )
+        input.form-control(
+          ng-model = 'question.alternatives[2]'
+          type='text' )
+      .input-group.col-sm-12
+        span.input-group-addon
+          input(
+            type='radio'
+            ng-model = 'question.answer'
+            value = '3'
+            name = 'Question' )
+        input.form-control(
+          ng-model = 'question.alternatives[3]'
+          type='text' )
+      button.btn.btn-success.pull-right(
+        ng-click = 'saveQuestion()') Guardar pregunta
+        br
+
 button.btn.btn-success.pull-right(
   ng-click = " questionView = !questionView "
   ng-show = 'questionView') Prepar Armas

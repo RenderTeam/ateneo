@@ -1,7 +1,7 @@
 doctype html
 .col-md-4
-  h3 perfil
-  h4 badges
+  h3 Gladiador
+  h3(ng-bind = 'username')
   br
   br
   ul.nav.nav-tabs
@@ -30,25 +30,25 @@ doctype html
       ) Nuevo Grupo Estudio
 
     #events.tab-pane.fade
-      div.list-group
+      div.list-group( ng-repeat = 'event in events')
         a.list-group-item(
           href=''
-          ng-click = 'view = 1') Dapibus ac facilisis in
-        a.list-group-item(href='') Morbi leo risukjljljls
-        a.list-group-item(href='') Vestibulum at eros
+          ng-click = 'eventView( event )'
+          ng-bind = 'event.name')
 
 .col-md-8
   .col-med-12.text-center( ng-show = 'view === 0 ? true:false')
     h2 Selecciona un grupo de estudio o un evento
 
   .col-med-12.text-center( ng-show = 'view === 1 ? true:false')
-    h1 Nombre del Evento
+    h1(ng-bind = 'selectEvent.name')
     .super-text
-      timer(countdown='lu', max-time-unit='"day"', interval='1000') {{ddays}}:{{hhours}}:{{mminutes}}:{{sseconds}}
+      timer(countdown='lu', max-d-unit='"day"', interval='1000') {{ddays}}:{{hhours}}:{{mminutes}}:{{sseconds}}
       br
-      | $ 100.00
+      | $
+      span( ng-bind = 'selectEvent.jackpot')
       br
-      button.btn.btn-success.btn-lg.btn-warning( ng-click='openEvent()')
+      button.btn.btn-success.btn-lg.btn-warning( ng-click='openEvent(selectEvent._id)')
         .glyphicon.glyphicon-screenshot
         br
         | Ir a Evento
