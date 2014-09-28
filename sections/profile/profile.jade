@@ -1,0 +1,50 @@
+doctype html
+.col-md-4
+  h3 perfil
+  h4 badges
+  br
+  br
+  ul.nav.nav-tabs
+    li.active
+      a(
+        data-target = '#studyGroup'
+        data-toggle ='tab'
+        href        = ''
+      ) Grupos de Estudio
+    li
+      a(
+        data-target = '#events'
+        data-toggle ='tab'
+        href        = ''
+      ) Eventos
+
+  .tab-content
+    #studyGroup.tab-pane.fade.in.active
+      block form
+        div.list-group
+          a.list-group-item(href='#') Dapibus ac facilisis in
+          a.list-group-item(href='#') Morbi leo risus
+          a.list-group-item(href='#') Porta ac consectetur ac
+          a.list-group-item(href='#') Vestibulum at eros
+
+    #events.tab-pane.fade
+      block form
+        div.list-group
+          a.list-group-item(href='#') Dapibus ac facilisis in
+          a.list-group-item(href='#') Morbi leo risus
+          a.list-group-item(href='#') Porta ac consectetur ac
+          a.list-group-item(href='#') Vestibulum at eros
+
+
+.col-md-8.text-center
+  h1 Nombre del Evento
+  .super-text
+    span( ng-bind = 'hoursEvent | number:0')
+    span :
+    span( ng-bind = 'minutsEvent | number:0')
+    span :
+    span( ng-bind = 'secondEvent | number:0')
+    br
+    | $ 100.00
+    br
+p.clearfix
