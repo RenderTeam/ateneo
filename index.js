@@ -84,7 +84,7 @@ var apiUrl = config.API,
 
 app.put( '/:schema/delete', function ( req, res ) {
   var schema = req.params.schema,
-      url = apiUrl.concat(schema + '/delete');
+      url = apiUrl.concat(schema);
 
   var bacon = (function() {
     var request = rest.del( url, { data: req.body }  );

@@ -43,6 +43,14 @@ module.exports = function (app) {
       return promise;
     };
 
+    candidate.remove = function (params) {
+      var promise = http.put('/candidate/delete', params)
+        .success(utils.returnData)
+        .error(utils.onError);
+
+      return promise;
+    };
+
     return candidate;
   }
   app.factory('Candidates', candidates);

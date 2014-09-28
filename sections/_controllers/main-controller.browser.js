@@ -42,6 +42,9 @@ module.exports = function (app) {
     });
     /*jslint unparam:false*/
 
+    rootScope.$on('$routeChangeSuccess', function ( event, next, current ) {
+      scope.alerts = [];
+    });
   }
 
   app.controller('Main', main);
