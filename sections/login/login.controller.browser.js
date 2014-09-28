@@ -11,7 +11,7 @@ module.exports = function (app) {
           scope.loading = false;
           scope.errorInLogin = false;
           if (user.access) {
-            location.path('/wizard');
+            location.path('/profile');
           } else {
             scope.user = {};
             scope.errorInLogin = true;
