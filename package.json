@@ -10,6 +10,7 @@
     "express": "~3.2.6",
     "express-less": "0.0.2",
     "jade": "~0.31.2",
+    "moment": "^2.8.3",
     "passport": "*",
     "passport-local": "*",
     "restler": "~3.1.0",

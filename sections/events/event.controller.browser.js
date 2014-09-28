@@ -2,11 +2,16 @@
 'use strict';
 
 module.exports = function (app) {
-  function event(scope,timeout) {
+  function event(scope,location) {
+    scope.questionView = true;
+
+    scope.returnProfile = function  ( ) {
+        location.path("/profile");
+      };
 
   }
 
 
   app.controller('Event', event);
-  event.$inject = ['$scope','$timeout'];
+  event.$inject = ['$scope','$location'];
 };

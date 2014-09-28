@@ -1,22 +1,43 @@
 doctype html
-.col-md-4
-  h3 perfil
-  h4 badges
-  .col-md-12
-    form( name = 'Questions' )
-    .col-md-5
-      .form-group
-        .form-label Nueva Pregunta:
-        textarea.form-control(
-          required
-          ng-model = 'equipment.status'
-        )
-    .col-md-5
-      .form-group
-        .form-label Escribe las posibles respuestas y selecciona la respuesta correcta:
-        .input-group.col-sm-12( ng-repeat = ' lu in lu')
-          span.input-group-addon
-            input(
-              type='radio'
-              name = 'Question' )
-          input.form-control( type='text' )
+.col-md-12
+  button.btn.btn-success.pull-left(
+    ng-click = " returnProfile() ")
+    .glyphicon.glyphicon-chevron-left &nbsp Regresar al perfil
+.col-md-12(ng-show = 'questionView')
+  .col-md-6
+    h1 Nombre del Evento
+    .super-text
+      timer(countdown='lu', max-time-unit='"day"', interval='1000') {{ddays}}:{{hhours}}:{{mminutes}}:{{sseconds}}
+      br
+      | $ 100.00
+      br
+  .col-md-6
+    .col-md-6.center.text-center
+      h2 Gladiadores
+      label Nombre
+      hr
+.col-md-12(ng-hide = 'questionView')
+  button.btn.btn-success.pull-right(
+    ng-click = " questionView = !questionView ") Información Batalla
+  p.clearfix
+  form( name = 'Questions' )
+  .col-md-5
+    .form-group
+      .form-label Nueva Pregunta:
+      textarea.form-control(
+        required
+        ng-model = 'equipment.status'
+      )
+  .col-md-5
+    .form-group
+      .form-label Escribe las posibles respuestas y selecciona la respuesta correcta:
+      .input-group.col-sm-12( ng-repeat = ' lu in lu')
+        span.input-group-addon
+          input(
+            type='radio'
+            name = 'Question' )
+        input.form-control( type='text' )
+button.btn.btn-success.pull-right(
+  ng-click = " questionView = !questionView "
+  ng-show = 'questionView') Prepar Armas
+  br
