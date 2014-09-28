@@ -1,0 +1,22 @@
+doctype html
+.col-md-4
+  h3 perfil
+  h4 badges
+  .col-md-12
+    form( name = 'Questions' )
+    .col-md-5
+      .form-group
+        .form-label Nueva Pregunta:
+        textarea.form-control(
+          required
+          ng-model = 'equipment.status'
+        )
+    .col-md-5
+      .form-group
+        .form-label Escribe las posibles respuestas y selecciona la respuesta correcta:
+        .input-group.col-sm-12( ng-repeat = ' lu in lu')
+          span.input-group-addon
+            input(
+              type='radio'
+              name = 'Question' )
+          input.form-control( type='text' )
