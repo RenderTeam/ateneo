@@ -25,8 +25,10 @@ doctype html
         a.list-group-item(href='#') Morbi leo risus
         a.list-group-item(href='#') Porta ac consectetur ac
         a.list-group-item(href='#') Vestibulum at eros
-      button.btn.btn-success.pull-right(
-        ng-click = "") Nuevo Grupo Estudio
+      div( ng-controller = 'NewStudyGroup' )
+        button.btn.btn-success.pull-right(
+          ng-click = 'RegisterNewStudyGroup()'
+        ) Nuevo Grupo Estudio
 
     #events.tab-pane.fade
       div.list-group
