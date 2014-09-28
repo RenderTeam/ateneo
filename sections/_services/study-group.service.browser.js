@@ -25,6 +25,14 @@ module.exports = function (app) {
       return promise;
     };
 
+    studyGroup.update = function (params) {
+      var promise = http.put('/studyGroup', params)
+        .success(utils.returnData)
+        .error(utils.onError);
+
+      return promise;
+    };
+
     studyGroup.remove = function (params) {
       var promise = http.put('/studyGroup/delete', params)
         .success(utils.returnData)

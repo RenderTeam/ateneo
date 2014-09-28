@@ -20,13 +20,11 @@ doctype html
 
   .tab-content
     #studyGroup.tab-pane.fade.in.active
-      div.list-group
+      div.list-group( ng-repeat = 'studyGroup in studyGroups')
         a.list-group-item(
           href=''
-          ng-click = 'view = 2') lol
-        a.list-group-item(href='') Morbi leo risus
-        a.list-group-item(href='') Porta ac consectetur ac
-        a.list-group-item(href='') Vestibulum at eros
+          ng-click = 'studyGroupView( studyGroup )'
+          ng-bind = 'studyGroup.name')
       a.btn.btn-success.pull-right(
         href = '/#/study-groups'
       ) Nuevo Grupo Estudio
@@ -56,16 +54,20 @@ doctype html
         | Ir a Evento
 
   .col-med-12.text-center( ng-show = 'view === 2 ? true:false')
-    h2 Grupo de estudios
+    h2(ng-bind = 'selectGroup.name')
     h4 Tema
     .col-md-6
-      h3 Usuarios &nbsp
-      label Nombre
-      hr
+      h3 Usuarios
+      br
+      span( ng-repeat = 'user in selectGroup.users' )
+        label(ng-bind = 'user')
+        hr
     .col-md-6
       h3 Proximos eventos &nbsp
-      label Nombre
-      hr
-    button.btn.btn-success(ng-click = 'openGroup()')
+      br
+      span( ng-repeat = 'event in selectGroup.events' )
+        label(ng-bind = 'event')
+        hr
+    p.clearfix
+    button.btn.btn-success(ng-click = 'openGroup(selectGroup._id)')
       .glyphicon.glyphicon-list-alt &nbsp Ir al Grupo de Estudio
-  p.clearfix
