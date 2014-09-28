@@ -8,8 +8,9 @@ module.exports = function (server) {
     var email     = new sendgrid.Email({
       to:       req.body.mail,
       from:     'darr.0725@gmail.com',
-      subject:  'Primer correo cool',
-      text:     'Hello world'
+      subject:  'Registro ateneo',
+      text:     'Bienvenido a Ateneo',
+      html: '<a href = "http://178.62.222.127:7000/#/register/' + req.body.id + '" target = "_blank">Activar mi cuenta</a>'
     });
 
     sendgrid.send(email, function(err, json) {

@@ -4,11 +4,6 @@
 module.exports = function (app) {
   function registerCandidate(scope, Candidates) {
     scope.register = function () {
-      console.log(scope.user);
-      /*Candidates.sendMail(scope.user)
-        .success(function (data) {
-          console.log(data);
-        });*/
       var params = {
         reference: scope.user
       };
@@ -16,15 +11,19 @@ module.exports = function (app) {
       Candidates.new(params)
         .success(function (data) {
           if (data.status) {
-            scope.alerts.push({
-              type: 'success',
-              message: 'Se te ha enviado un correo para seguir el proceso de registro'
-            });
+            scope.user.id = data._id;
+            Candidates.sendMail(scope.user)
+              .success(function (data) {
+                console.log(data);
+                scope.alerts.push({
+                  type: 'success',
+                  message: 'Se te ha enviado un correo para seguir el proceso de registro'
+                });
 
-            scope.user = {};
-            scope.confirmMail = '';
+                scope.user = {};
+                scope.confirmMail = '';
+              });
           }
-          console.log(data);
         });
     };
   }
