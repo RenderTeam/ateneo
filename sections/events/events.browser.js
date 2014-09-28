@@ -3,8 +3,12 @@
 
 function routeConfig(routeProvider) {
   routeProvider.when('/study-groups/events/:eventId', {
-    controller :  'Event',
+    controller :  'EventView',
     templateUrl : '/html/events/event.html'
+  })
+  .when('/study-groups/events/:eventId/jackpot', {
+    controller :  'Jackpot',
+    templateUrl : '/html/events/jackpot.html'
   });
 }
 
