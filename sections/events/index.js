@@ -1,10 +1,14 @@
 /*jslint node: true, indent: 2,nomen:true */
 "use strict";
-
-var paypal = require('paypal-rest-sdk');
+var apiUrl = require('../../config')().API,
+    Bacon = require('baconjs').Bacon,
+    rest = require('restler'),
+    paypal = require('paypal-rest-sdk');
 
 module.exports = function (server) {
-  server.get('/payment/paypal', function (req, res) {
+  server.post('/payment/paypal', function (req, res) {
+    var params = req.body;
+    console.log(params.budget);
     var create_payment_json = {
       "intent": "sale",
       "payer": {
@@ -30,13 +34,8 @@ module.exports = function (server) {
       },
       "transactions": [{
           "amount": {
-              "total": "7",
-              "currency": "USD",
-              "details": {
-                  "subtotal": "5",
-                  "tax": "1",
-                  "shipping": "1"
-              }
+              "total": params.budget.toString(),
+              "currency": "USD"
           },
           "description": "This is the payment transaction description."
       }]
@@ -49,11 +48,41 @@ module.exports = function (server) {
 
     paypal.payment.create(create_payment_json, function (error, payment) {
       if (error) {
-          throw error;
+        console.log(error.response.details);
       } else {
           console.log("Create Payment Response");
           console.log(payment);
       }
     });
+
+    var event = params.event,
+      url = apiUrl.concat('event/'),
+      bacon = {},
+      data = {};
+
+      data = {
+        condition: params.event._id,
+        reference: {
+          jackpot : params.event.jackpot + Number(params.budget)
+        }
+      };
+
+      console.log('############');
+      console.log(data);
+      console.log('############');
+
+    bacon = (function () {
+      var peticion = rest.put(url, {
+        data: req.body,
+        parser: rest.parsers.json
+      });
+      return Bacon.fromEventTarget(peticion, 'complete');
+    }());
+
+    bacon.onValue(function (data) {
+      res.send(data);
+    });
+
+    res.redirect('/');
   });
 };

@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = function (app) {
-  function administrateStudyGroup(scope, routeParams, StudyGroups, Users, Events) {
+  function administrateStudyGroup(scope, routeParams, StudyGroups, Users, Events, location) {
 
 
 
@@ -76,5 +76,5 @@ module.exports = function (app) {
   }
 
   app.controller('AdministrateStudyGroup', administrateStudyGroup);
-  administrateStudyGroup.$inject = ['$scope', '$routeParams', 'StudyGroups', 'Users', 'Events'];
+  administrateStudyGroup.$inject = ['$scope', '$routeParams', 'StudyGroups', 'Users', 'Events', '$location'];
 };

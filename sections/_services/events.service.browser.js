@@ -28,11 +28,27 @@ module.exports = function (app) {
     };
 
     event.search = function (params) {
+      params.fields = ['_id'];
       var promise = http.post('/event', params)
         .success(utils.returnData)
         .error(utils.onError);
 
       return promise;
+    };
+
+    event.pay = function (event, budget) {
+      var params = {
+        'event': event,
+        'budget': budget
+      }, promise = http.post('/payment/paypal', params)
+        .success(function (res) {
+          console.log(res);
+        })
+        .error(function (error) {
+          console.log(error);
+        });
+
+        return promise;
     };
 
     return event;
