@@ -25,15 +25,70 @@ ul.nav.nav-pills
     .col-md-2
     .col-md-4
       h3 Usuarios &nbsp
-        button.btn.btn-success(ng-click = 'openGroup()')
+        button.btn.btn-success(ng-click = 'hideNewUser = true')
           .glyphicon.glyphicon-plus
-      label Nombre
+      .input-group( ng-show = 'hideNewUser')
+        select.form-control(
+          ng-options = 'user.username for user in users'
+          ng-model = 'newUser'
+          type='text'
+        )
+        span.input-group-btn
+          button.btn.btn-default(
+            ng-click = 'saveNewUser()'
+            type='button') add
+
+      br
+      br
+      span( ng-repeat = 'user in studyGroup.users' )
+        label(ng-bind = 'user')
+        hr
       hr
     .col-md-4
       h3 Eventos &nbsp
         button.btn.btn-success(ng-click = 'openGroup()')
           .glyphicon.glyphicon-plus
-      label Eventos
+      form( name = 'newEquipment' )
+        .col-md-6
+          .form-group
+            .form-label Nombre de evento:
+            input.form-control(
+              ng-model = 'newEvent.name'
+            )
+
+          .form-group
+            .form-label Día:
+            input.form-control(
+              ng-model = 'newEvent.date'
+              type = 'date'
+            )
+          .form-label Hora:
+            input.form-control(
+              ng-model = 'hour'
+              type = 'number'
+            )
+          .form-label Minutos:
+            input.form-control(
+              ng-model = 'minute'
+              type = 'number'
+            )
+          .form-group
+            .form-label Tiempo por pregunta segundos:
+            input.form-control(
+              ng-model = 'newEvent.max_time_per_question'
+            )
+          .form-group
+            .form-label Numero de preguntas:
+            input.form-control(
+              ng-model = 'newEvent.total_question_per_event'
+            )
+          button.btn.btn-success.pull-right(
+            ng-click = 'saveNewEvent()'
+            type='button') Crear
+
+      span( ng-repeat = 'event in studyGroup.events' )
+        label(ng-bind = 'event')
+        hr
       hr
   #chat.tab-pane.fade
     h1 chat
