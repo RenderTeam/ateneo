@@ -43,6 +43,8 @@ module.exports = function (app) {
     /*jslint unparam:false*/
 
     rootScope.$on('$routeChangeSuccess', function ( event, next, current ) {
+      scope.username = Auth.user.username;
+      scope.isLoggedIn = Auth.isLoggedIn();
       scope.alerts = [];
     });
   }

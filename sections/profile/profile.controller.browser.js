@@ -13,7 +13,7 @@ module.exports = function (app) {
     console.log(scope.lu);
 
     scope.openEvent = function  ( ) {
-        location.path("study-groups/events/lu");
+      location.path("study-groups/events/lu");
     };
 
 
