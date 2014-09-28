@@ -26,18 +26,55 @@ doctype html
     .form-group
       .form-label Nueva Pregunta:
       textarea.form-control(
-        required
-        ng-model = 'equipment.status'
+        ng-model = 'question.question'
       )
   .col-md-5
     .form-group
       .form-label Escribe las posibles respuestas y selecciona la respuesta correcta:
-      .input-group.col-sm-12( ng-repeat = ' lu in lu')
+      .input-group.col-sm-12
         span.input-group-addon
           input(
             type='radio'
+            ng-model = 'question.answer'
+            value = '0'
             name = 'Question' )
-        input.form-control( type='text' )
+        input.form-control(
+          ng-model = 'question.alternatives[0]'
+          type='text' )
+      .input-group.col-sm-12
+        span.input-group-addon
+          input(
+            type='radio'
+            ng-model = 'question.answer'
+            value = '1'
+            name = 'Question' )
+        input.form-control(
+          ng-model = 'question.alternatives[1]'
+          type='text' )
+      .input-group.col-sm-12
+        span.input-group-addon
+          input(
+            type='radio'
+            ng-model = 'question.answer'
+            value = '2'
+            name = 'Question' )
+        input.form-control(
+          ng-model = 'question.alternatives[2]'
+          type='text' )
+      .input-group.col-sm-12
+        span.input-group-addon
+          input(
+            type='radio'
+            ng-model = 'question.answer'
+            value = '3'
+            name = 'Question' )
+        input.form-control(
+          ng-model = 'question.alternatives[3]'
+          type='text' )
+      button.btn.btn-success.pull-right(
+        ng-click = 'saveQuestion()') Guardar pregunta
+        br
+
 button.btn.btn-success.pull-right(
   ng-click = " questionView = !questionView "
   ng-show = 'questionView') Prepar Armas
