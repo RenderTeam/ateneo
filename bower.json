@@ -18,6 +18,7 @@
     "angular-cookies": "~1.2.13-build.2255",
     "angular-translate": "~2.0.1",
     "angular-css-injector": "~1.0.2",
-    "angular-route": "~1.2.13-build.2255"
+    "angular-route": "~1.2.13-build.2255",
+    "angular-timer": "~1.1.7"
   }
 }

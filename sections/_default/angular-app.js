@@ -9,6 +9,7 @@ require('angular-css-injector');
 require('angular-resource');
 require('angular-route');
 require('angular-translate');
+require('angular-timer');
 
 var app = angular.module('ateneo', [
     'angular.css.injector',
@@ -16,6 +17,7 @@ var app = angular.module('ateneo', [
     'ngResource',
     'ngRoute',
     'pascalprecht.translate',
+    'timer',
     'ui.bootstrap'
   ]);
 

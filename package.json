@@ -30,7 +30,8 @@
     "angular-route": "./bower_components/angular-route/angular-route.min.js",
     "angular-css-injector": "./bower_components/angular-css-injector/angular-css-injector.js",
     "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
-    "angular-translate": "./bower_components/angular-translate/angular-translate.min.js"
+    "angular-translate": "./bower_components/angular-translate/angular-translate.min.js",
+    "angular-timer": "./bower_components/angular-timer/dist/angular-timer.min.js"
   },
   "browserify-shim": {
     "jquery": "$",
@@ -66,6 +67,11 @@
       ]
     },
     "angular-route": {
+      "depends": [
+        "angular:angular"
+      ]
+    },
+    "angular-timer": {
       "depends": [
         "angular:angular"
       ]

@@ -1,2 +1,26 @@
 h3 Nuevo grupo de estudio
 hr
+.col-md-4.center
+  form( name = 'NewStudyGroupForm' )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-user
+        input.form-control(
+          disabled
+          ng-model      = 'studyGroup.name'
+          placeholder   = 'Usuario'
+          required
+          type          = 'text'
+        )
+    .form-group
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-envelope
+        input.form-control(
+          disabled
+          ng-model      = 'studyGroup.'
+          placeholder   = 'Correo'
+          required
+          type          = 'email'
+        )
