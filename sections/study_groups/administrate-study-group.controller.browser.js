@@ -44,6 +44,7 @@ module.exports = function (app) {
 
     scope.saveNewEvent = function  () {
       scope.newEvent.date = scope.newEvent.date + ' ' +scope.hour + ':' + scope.minute;
+      scope.newEvent.users = scope.studyGroup.users;
       scope.newEvent.jackpot = 0;
       scope.newEvent.study_group = routeParams.groupId;
       var params = {
