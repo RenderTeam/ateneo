@@ -9,6 +9,14 @@ module.exports = function (app) {
       location.path("/profile");
     };
 
+    scope.enrollInEvent = function (event, budget) {
+      console.log(event, budget);
+      Events.pay(event, budget)
+        .success(function (data) {
+          console.log(data);
+        });
+    };
+
     var currentEvent = {
       condition: {
         _id: routeParams.eventId
@@ -16,8 +24,9 @@ module.exports = function (app) {
     };
 
     Events.search(currentEvent)
-      .success(function (data) {
-        console.log(data);
+      .success(function (response) {
+        scope.event = response.data[0];
+        console.log(response.data[0]);
       });
 
   }
