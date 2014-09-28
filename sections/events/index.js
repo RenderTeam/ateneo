@@ -5,41 +5,55 @@ var paypal = require('paypal-rest-sdk');
 
 module.exports = function (server) {
   server.get('/payment/paypal', function (req, res) {
-    var savedCard = {
-        "intent": "sale",
-        "payer": {
-            "payment_method": "credit_card",
-            "funding_instruments": [{
-                "credit_card_token": {
-                    "credit_card_id": "CARD-5BT058015C739554AKE2GCEI"
-                }
-            }]
-        },
-        "transactions": [{
-            "amount": {
-                "currency": "USD",
-                "total": "1.00"
-            },
-            "description": "This is the payment description."
-        }]
+    var create_payment_json = {
+      "intent": "sale",
+      "payer": {
+          "payment_method": "credit_card",
+          "funding_instruments": [{
+              "credit_card": {
+                  "type": "visa",
+                  "number": "4417119669820331",
+                  "expire_month": "11",
+                  "expire_year": "2018",
+                  "cvv2": "874",
+                  "first_name": "Joe",
+                  "last_name": "Shopper",
+                  "billing_address": {
+                      "line1": "52 N Main ST",
+                      "city": "Johnstown",
+                      "state": "OH",
+                      "postal_code": "43210",
+                      "country_code": "US"
+                  }
+              }
+          }]
+      },
+      "transactions": [{
+          "amount": {
+              "total": "7",
+              "currency": "USD",
+              "details": {
+                  "subtotal": "5",
+                  "tax": "1",
+                  "shipping": "1"
+              }
+          },
+          "description": "This is the payment transaction description."
+      }]
     };
-
     paypal.configure({
       'mode': 'sandbox', //sandbox or live
-      'client_id': 'Ac9UaBA00fBms8pYHE0N9vJY23GLC2FYmd7GvFPtJffruLaWy9SKmLSP_Q9-',
-      'client_secret': 'EGtGuBDMGZamIcmCGe3le33Voq7YD9Hxo-mYgQTruuhAXz6DK8dZ-zmjdt9X'
+      'client_id': 'ATjemBAjV-Wpvfglv2I1tAHiFIBUPN1Bmrhi663cMiFcHqWlMU5otixeAIwn',
+      'client_secret': 'EF5eARD6cfbUdrzIbHRnGRWnF7fZwNWefBh0LsOSQ3srTmzVnsvMXOGt-ezd'
     });
 
-
-    paypal.payment.create(savedCard, function (error, payment) {
-        if (error) {
-            throw error;
-        } else {
-            console.log("Pay with stored card Response");
-            console.log(JSON.stringify(payment));
-        }
-
+    paypal.payment.create(create_payment_json, function (error, payment) {
+      if (error) {
+          throw error;
+      } else {
+          console.log("Create Payment Response");
+          console.log(payment);
+      }
     });
-
   });
-};
+}
