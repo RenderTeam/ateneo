@@ -1,1 +1,44 @@
-h1 Study group
+h2 Grupo de estudio &nbsp
+
+ul.nav.nav-pills
+  li.active
+    a(
+      data-target = '#usersEvents'
+      data-toggle ='tab'
+      href='') Usuarios y Eventos
+  li
+    a(
+      data-target = '#material'
+      data-toggle ='tab'
+      href='') Material de estudio
+  li
+    a(
+      data-target = '#chat'
+      data-toggle ='tab'
+      href='') Chat
+  li
+    a(href='/#/profile')
+      .glyphicon.glyphicon-chevron-left Regresar al perfil
+
+.tab-content
+  #usersEvents.tab-pane.fade.in.active
+    .col-md-2
+    .col-md-4
+      h3 Usuarios &nbsp
+        button.btn.btn-success(ng-click = 'openGroup()')
+          .glyphicon.glyphicon-plus
+      label Nombre
+      hr
+    .col-md-4
+      h3 Eventos &nbsp
+        button.btn.btn-success(ng-click = 'openGroup()')
+          .glyphicon.glyphicon-plus
+      label Eventos
+      hr
+  #chat.tab-pane.fade
+    h1 chat
+  #material.tab-pane.fade
+    h1 material
+
+
+p.clearfix

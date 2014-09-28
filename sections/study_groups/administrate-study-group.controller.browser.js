@@ -2,11 +2,12 @@
 'use strict';
 
 module.exports = function (app) {
-  function administrateStudyGroup(scope, routeParams) {
+  function administrateStudyGroup(scope, routeParams,location) {
     console.log(routeParams);
     console.log('administrateStudyGroup');
+    
   }
 
   app.controller('AdministrateStudyGroup', administrateStudyGroup);
-  administrateStudyGroup.$inject = ['$scope', '$routeParams'];
+  administrateStudyGroup.$inject = ['$scope', '$routeParams','$location'];
 };
