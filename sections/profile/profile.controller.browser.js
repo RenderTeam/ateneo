@@ -10,7 +10,7 @@ module.exports = function (app) {
     scope.lu = date.diff(dateNow) / 1000;
 
     scope.openEvent = function  ( ) {
-        location.path("study-groups/events/lu");
+      location.path("study-groups/events/lu");
     };
 
     scope.openGroup = function  ( ) {

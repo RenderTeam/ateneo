@@ -1,26 +1,45 @@
 h3 Nuevo grupo de estudio
 hr
-.col-md-4.center
-  form( name = 'NewStudyGroupForm' )
-    .form-group
+.col-md-9.center
+  .row.form-row
+    .col-md-6
+      label Nombre del grupo
+      input.form-control(
+        ng-model  = 'study_group.name'
+        required
+        type      = 'text'
+      )
+
+    .col-md-6
+      label Invitar usuarios
       .input-group
-        .input-group-addon
-          span.glyphicon.glyphicon-user
-        input.form-control(
-          disabled
-          ng-model      = 'studyGroup.name'
-          placeholder   = 'Usuario'
-          required
-          type          = 'text'
+        select.form-control(
+          ng-model  = 'selectedUser'
+          ng-options = 'user as user.username for user in users'
         )
-    .form-group
-      .input-group
-        .input-group-addon
-          span.glyphicon.glyphicon-envelope
-        input.form-control(
-          disabled
-          ng-model      = 'studyGroup.'
-          placeholder   = 'Correo'
-          required
-          type          = 'email'
-        )
+        span.input-group-btn
+          button.btn.btn-success(
+            ng-click = 'addUser()'
+          ) +
+  .col-md-12( ng-hide = 'usersAdded.length < 1')
+    label Usuarios seleccionados
+    .clearfix
+    span(
+      ng-repeat = 'user in usersAdded'
+    )
+      span.label.label-primary.pointer(
+        ng-bind = 'user.username'
+        ng-dblclick = 'removeUser( $index )'
+      )
+      | &nbsp;
+  hr
+  .form-actions
+    .pull-right
+      button.btn.btn-primary(
+        ng-class      = '{ disabled: submitting }'
+        ng-click      = 'createStudyGroup()'
+        ng-disabled   = 'formBloqueado'
+      )
+        span Crear grupo
+  .clearfix
+  br

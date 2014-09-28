@@ -32,9 +32,13 @@ block body
               ul.dropdown-menu
                 li
                   a(
-                    ng-click = 'logout()',
-                    translate = 'NAVBAR.LOGOUT'
-                  )
+                    href = '/#/profile'
+                  ) Perfil
+                li.divider
+                li.pointer
+                  a(
+                    ng-click = 'logout()'
+                  ) Cerrar sesión
   .col-md-12
     alert(
       close = 'closeAlert( $index )'

@@ -4,11 +4,11 @@ var __ = require('underscore')._,
   utils = require('../_common/utils');
 
 module.exports = function (app) {
-  function users(http) {
-    var user = {};
+  function studyGroups(http) {
+    var studyGroup = {};
 
-    user.new = function (params) {
-      var url = '/user/new';
+    studyGroup.new = function (params) {
+      var url = '/studyGroup/new';
 
       var promise = http.post(url, params)
         .success(utils.returnData)
@@ -17,25 +17,25 @@ module.exports = function (app) {
       return promise;
     };
 
-    user.search = function (params) {
-      var promise = http.post('/user', params)
+    studyGroup.search = function (params) {
+      var promise = http.post('/studyGroup', params)
         .success(utils.returnData)
         .error(utils.onError);
 
       return promise;
     };
 
-    user.approve = function (params) {
-      var promise = http.post('/user/approve', params)
+    studyGroup.remove = function (params) {
+      var promise = http.put('/studyGroup/delete', params)
         .success(utils.returnData)
         .error(utils.onError);
 
       return promise;
     };
 
-    return user;
+    return studyGroup;
   }
-  app.factory('Users', users);
+  app.factory('StudyGroups', studyGroups);
 
-  users.$inject = ['$http'];
+  studyGroups.$inject = ['$http'];
 };
